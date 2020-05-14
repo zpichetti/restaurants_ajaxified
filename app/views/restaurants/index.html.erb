@@ -1,0 +1,14 @@
+<h1>Restaurants</h1>
+
+<div data-controller="counter">
+nbr reviews : <span data-target="counter.count"></span>
+  <ul>
+    <% @restaurants.each do |restaurant| %>
+      <li>
+        <%= link_to restaurant.name, restaurant_path(restaurant) %>
+        <button data-action="click->counter#refresh_review" data-id="<%= restaurant.id %>">nbr</button>
+        <%= link_to "Delete", restaurant, method: :delete, remote: true %>
+      </li>
+    <% end %>
+  </ul>
+</div>
